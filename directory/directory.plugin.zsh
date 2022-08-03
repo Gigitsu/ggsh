@@ -31,6 +31,9 @@ for index ({1..9}); do
 done
 unset index
 
+# Defaults ls with colors
+alias ls='ls --color=auto'
+
 # List directory contents
 alias l='ls -1A'         # Lists in one column, hidden files.
 alias ll='ls -lh'        # Lists human readable sizes.
