@@ -47,7 +47,7 @@ function generate_compdump() {
   local zcompdump_refresh zcompdump_path 
   
   # Construct zcompdump Gigish metadata
-  zcompdump_path="${CACHE_HOME:-$HOME/.cache/gigish}/.zcompdump"
+  zcompdump_path="${CACHE_HOME:-$HOME/.cache/ggsh}/.zcompdump"
   
   # On slow systems, checking the cached .zcompdump file to see if it must be
   # regenerated adds a noticable delay to zsh startup.  This little hack restricts
