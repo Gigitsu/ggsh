@@ -1,3 +1,7 @@
+if (( ! $+commands[git] )); then
+  return 1
+fi
+
 # Log
 _git_log_medium_format='%C(bold)Commit:%C(reset) %C(green)%H%C(red)%d%n%C(bold)Author:%C(reset) %C(cyan)%an <%ae>%n%C(bold)Date:%C(reset)   %C(blue)%ai (%ar)%C(reset)%n%+B'
 _git_log_oneline_format='%C(green)%h%C(reset) %s%C(red)%d%C(reset)%n'
@@ -150,8 +154,8 @@ alias gFsx='git flow support delete'
 # Grep (g)
 alias gg='git grep'
 alias ggi='git grep --ignore-case'
-alias ggl='git grep --files-with-matches'
-alias ggL='git grep --files-without-matches'
+alias ggm='git grep --files-with-matches'
+alias ggM='git grep --files-without-matches'
 alias ggv='git grep --invert-match'
 alias ggw='git grep --word-regexp'
 
