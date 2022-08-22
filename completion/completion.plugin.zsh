@@ -71,7 +71,7 @@ function generate_compdump() {
   # Execute code that does not affect the current session in the background.
   {
     # Compile the completion dump to increase startup speed.
-    if [[ -s "$zcompdump_path" && (! -s "${zcompdump}.zwc" || "$zcompdump_path" -nt "${zcompdump_path}.zwc") ]]; then
+    if [[ -s "$zcompdump_path" && (! -s "${zcompdump_path}.zwc" || "$zcompdump_path" -nt "${zcompdump_path}.zwc") ]]; then
       zcompile "$zcompdump_path"
     fi
   } &!
