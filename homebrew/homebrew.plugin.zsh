@@ -33,31 +33,16 @@ alias casku='brew upgrade --cask'
 alias caskx='brew uninstall --cask'
 
 if (( $+commands[fzf] )); then
-  function brew_install {
-    if [ -z $@ ]; then
-      fzf_search_install
-    else
-      command brew install $@
-    fi
-  }
-
-  function brew_search {
-    if [ -z $@ ]; then
-      fzf_search_install
-    else
-      command brew search $@
-    fi
-  }
-
   function fzf_search_install {
-      local inst=$(brew search | fzf -m)
+    local what=$1; shift
 
-      if [[ $inst ]]; then
-        for prog in $(echo $inst);
-        do; brew install $prog; done;
-      fi
+    local inst=$(brew $what | fzf --query="$1" -m --preview 'HOMEBREW_COLOR=true brew info {}')
+
+    if [[ $inst ]]; then
+      for prog in $(echo $inst); do; brew install $prog; done;
+    fi
   }
 
-  alias brewi='brew_install'
-  alias brews='brew_search'
+  alias brews='fzf_search_install formulae'
+  alias casks='fzf_search_install casks'
 fi
