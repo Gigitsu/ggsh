@@ -26,7 +26,7 @@ list_git_folders_fn="find $projects_src -type d -exec [ -e '{}/.git' ] ';' -prun
 ###          Bindings         ###
 #################################
 
-tmux bind -N "Open a git repository under $project_src" -n M-r  display-popup -E "$list_git_folders_fn |\
+tmux bind -N "Open a git repository under $project_src" -n M-o  display-popup -E "$list_git_folders_fn |\
     fzf --reverse --header='Open project >' --with-nth 2 --keep-right | awk '{print \$1}' |\
     xargs $open_session"
 
