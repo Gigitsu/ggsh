@@ -1,5 +1,6 @@
 function format(path) {
-  path = substr(path, length(prefix) + 1)
+  gsub(/\/$/, "", prefix)
+  path = substr(path, length(prefix) + 2) # + 1 because substr start is 1 based, + 1 for the missing trailing slash
 
   n_path_parts=split(path, path_parts, "/")
   n_domain_parts=split(path_parts[1], domain_parts, ".")
