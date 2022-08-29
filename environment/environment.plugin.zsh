@@ -74,7 +74,7 @@ unsetopt CLOBBER            # Do not overwrite existing files with > and >>. Use
 # Load 'run-help' function.
 autoload -Uz run-help-{ip,openssl,sudo}
 
-# --- Aliases
+#--- Aliases
 
 # Disable correction.
 alias ack='nocorrect ack'
