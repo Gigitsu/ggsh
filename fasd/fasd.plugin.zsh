@@ -1,15 +1,25 @@
+#
+# Initialize and configures fasd
+#
+# Authors
+#   Gigitsu <luigi.clemente@gsquare.it>
+#
+
 # check if fasd is installed
-if (( ! ${+commands[fasd]} )); then
-  return 1
-fi
+(( ! ${+commands[fasd]} )) && return 1
+
+#--- Cache
 
 local _fasd_cache_path="${CACHE_HOME:-$HOME/.cache/ggsh}/fasd-init-cache.zsh"
 
 if [[ "$commands[fasd]" -nt "$_fasd_cache_path" || ! -s "$_fasd_cache_path" ]]; then
+  mkdir -p "$_fasd_cache_path:h"
   fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install >| "$_fasd_cache_path"
 fi
 
 source "$_fasd_cache_path"
+
+#--- Aliases
 
 if (( $+commands[fzf] )); then
   jj() {

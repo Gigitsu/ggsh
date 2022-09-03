@@ -5,6 +5,27 @@
 #   Gigitsu <luigi.clemente@gsquare.it>
 #
 
+#--- Options
+
+setopt COMPLETE_IN_WORD     # Complete from both ends of a word.
+setopt ALWAYS_TO_END        # Move cursor to the end of a completed word.
+setopt PATH_DIRS            # Perform path search even on command names with slashes.
+setopt AUTO_MENU            # Show completion menu on a successive tab press.
+setopt AUTO_LIST            # Automatically list choices on ambiguous completion.
+setopt AUTO_PARAM_SLASH     # If completed parameter is a directory, add a trailing slash.
+setopt EXTENDED_GLOB        # Needed for file modification glob modifiers with compinit.
+setopt MENU_COMPLETE        # Do not autoselect the first completion entry.
+
+unsetopt FLOW_CONTROL       # Disable start/stop characters in shell editor.
+unsetopt CASE_GLOB
+
+#--- Variables
+
+# Standard style used by default for 'list-colors'
+LS_COLORS=${LS_COLORS:-'di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:'}
+
+#--- Functions
+
 # Human-readably notifying the user of these insecurities.
 function handle_completion_insecurities() {
   # List of the absolute paths of all unique insecure directories, split on
@@ -47,7 +68,7 @@ function generate_compdump() {
   local zcompdump_refresh zcompdump_path 
   
   # Construct zcompdump Gigish metadata
-  zcompdump_path="${CACHE_HOME:-$HOME/.cache/ggsh}/zcompdump"
+  zcompdump_path="$HOME/.cache/ggsh/zcompdump"
   
   # On slow systems, checking the cached .zcompdump file to see if it must be
   # regenerated adds a noticable delay to zsh startup.  This little hack restricts
@@ -77,6 +98,7 @@ function generate_compdump() {
   } &!
 }
 
+#--- Initialization
 
 autoload -Uz compaudit compinit
 
@@ -86,31 +108,15 @@ handle_completion_insecurities
 # Generates compdump to speed up shell start-up
 generate_compdump
 
-## options
-
-setopt COMPLETE_IN_WORD     # Complete from both ends of a word.
-setopt ALWAYS_TO_END        # Move cursor to the end of a completed word.
-setopt PATH_DIRS            # Perform path search even on command names with slashes.
-setopt AUTO_MENU            # Show completion menu on a successive tab press.
-setopt AUTO_LIST            # Automatically list choices on ambiguous completion.
-setopt AUTO_PARAM_SLASH     # If completed parameter is a directory, add a trailing slash.
-setopt EXTENDED_GLOB        # Needed for file modification glob modifiers with compinit.
-
-unsetopt MENU_COMPLETE      # Do not autoselect the first completion entry.
-unsetopt FLOW_CONTROL       # Disable start/stop characters in shell editor.
-
-# Standard style used by default for 'list-colors'
-LS_COLORS=${LS_COLORS:-'di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:'}
-
-# styles
+#-- Styles
 
 # Defaults.
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:default' list-prompt '%S%M matches%s'
 
 # Use caching to make completion for commands such as dpkg and apt usable.
-zstyle ':completion::*' use-cache on
-zstyle ':completion::*' cache-path "${ZDOTDIR:-$HOME}/zcompcache"
+zstyle ':completion:complete:*' use-cache on
+zstyle ':completion:complete:*' cache-path "$HOME/.cache/ggsh/zcompcache"
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
@@ -147,7 +153,6 @@ zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-d
 zstyle ':completion:*:*:cd:*:directory-stack' menu yes select
 zstyle ':completion:*:-tilde-:*' group-order 'named-directories' 'path-directories' 'users' 'expand'
 zstyle ':completion:*' squeeze-slashes true
-zstyle ':completion:*' special-dirs true # Complete . and .. special directories
 
 # History
 zstyle ':completion:*:history-words' stop yes
@@ -158,11 +163,9 @@ zstyle ':completion:*:history-words' menu yes
 # Environment Variables
 zstyle ':completion::*:(-command-|export):*' fake-parameters ${${${_comps[(I)-value-*]#*,}%%,*}:#-*-}
 
-# Populate hostname completion. But allow ignoring custom entries from static
-# */etc/hosts* which might be uninteresting.
 zstyle -e ':completion:*:hosts' hosts 'reply=(
   ${=${=${=${${(f)"$(cat {/etc/ssh/ssh_,~/.ssh/}known_hosts(|2)(N) 2> /dev/null)"}%%[#| ]*}//\]:[0-9]*/ }//,/ }//\[/ }
-  ${=${(f)"$(cat /etc/hosts(|)(N) <<(ypcat hosts 2> /dev/null))"}%%(\#${ETC_HOST_IGNORED_COMPLETION:+|${(j:|:)~_etc_host_ignores}})*}
+  ${=${(f)"$(cat /etc/hosts(|)(N) <<(ypcat hosts 2> /dev/null))"}%%(\#${_etc_host_ignores:+|${(j:|:)~_etc_host_ignores}})*}
   ${=${${${${(@M)${(f)"$(cat ~/.ssh/config 2> /dev/null)"}:#Host *}#Host }:#*\**}:#*\?*}}
 )'
 
@@ -207,8 +210,5 @@ zstyle ':completion:*:ssh:*' group-order users hosts-domain hosts-host users hos
 zstyle ':completion:*:(ssh|scp|rsync):*:hosts-host' ignored-patterns '*(.|:)*' loopback ip6-loopback localhost ip6-localhost broadcasthost
 zstyle ':completion:*:(ssh|scp|rsync):*:hosts-domain' ignored-patterns '<->.<->.<->.<->' '^[-[:alnum:]]##(.[-[:alnum:]]##)##' '*@*'
 zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<->.<->.<->|(|::)([[:xdigit:].]##:(#c,2))##(|%*))' '127.0.0.<->' '255.255.255.255' '::1' 'fe80::*'
-
-# automatically load bash completion functions
-# autoload -U +X bashcompinit && bashcompinit
 
 unset -f handle_completion_insecurities generate_compdump

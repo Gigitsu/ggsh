@@ -1,3 +1,10 @@
+#
+# Sets keybindings
+#
+# Authors
+#   Gigitsu <luigi.clemente@gsquare.it>
+#
+
 # http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html
 # http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Zle-Builtins
 # http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Standard-Widgets
@@ -7,30 +14,22 @@ if [[ "$TERM" == 'dumb' ]]; then
   return 1
 fi
 
-#
-# Options
-#
+#--- Options
 
 setopt BEEP                     # Beep on error in line editor.
 
-#
-# Variables
-#
+#--- Variables
 
 # Treat these characters as part of a word.
 WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 
-#
-# External Editor
-#
+#--- External Editor
 
 # Allow command line editing in an external editor.
 autoload -Uz edit-command-line
 zle -N edit-command-line
 
-#
-# Custom widgets
-#
+#--- Custom widgets
 
 # Expands .... to ../..
 function expand-dots {
@@ -51,9 +50,7 @@ function prepend-sudo {
 }
 zle -N prepend-sudo
 
-#
-# Bindings
-#
+#--- Bindings
 
 bindkey -e
 

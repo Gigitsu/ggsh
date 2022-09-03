@@ -1,17 +1,19 @@
-#
-# Variables
-#
+(( ! $+commands[brew] )) && return 1
+
+#-- Variables
 
 # Load standard Homebrew shellenv into the shell session.
 # Load 'HOMEBREW_' prefixed variables only. Avoid loading 'PATH' related
 # variables as they are already handled in standard zsh configuration.
-if (( $+commands[brew] )); then
-  eval "${(@M)${(f)"$(brew shellenv 2> /dev/null)"}:#export HOMEBREW*}"
-fi
+eval "${(@M)${(f)"$(brew shellenv 2> /dev/null)"}:#export HOMEBREW*}"
 
-#
-# Aliases
-#
+# Add completion for keg-only brewed curl when available.
+if [[ -d "${curl_prefix::="$(brew --prefix 2> /dev/null)"/opt/curl}" ]]; then
+  fpath=($curl_prefix/share/zsh/site-functions $fpath)
+fi
+unset curl_prefix
+
+#-- Aliases
 
 # Homebrew
 alias brewc='brew cleanup'

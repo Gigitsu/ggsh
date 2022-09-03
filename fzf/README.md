@@ -11,3 +11,8 @@ This plugin enables fzf default keybindings and completions.
 ```sh
 brew install fzf
 ```
+
+## Variables
+
+- `FZF_DEFAULT_COMMAND` Default command to use when input is tty, if `rg` is installed this variable is set otherwise not
+- `FZF_CTRL_T_COMMAND` Default ctrl-t command, if `rg` is installed this variable is set otherwise not

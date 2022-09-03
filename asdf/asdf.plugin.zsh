@@ -1,4 +1,11 @@
-# Check asdf exists
+#
+# Correctly initialize asdf version manager
+#
+# Authors
+#   Gigitsu <luigi.clemente@gsquare.it>
+#
+
+# Check if asdf exists
 (( ! $+commands[asdf] )) && return 1
 
 # Find where asdf should be installed
