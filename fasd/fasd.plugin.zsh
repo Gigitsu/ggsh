@@ -10,7 +10,7 @@
 
 #--- Cache
 
-local _fasd_cache_path="${CACHE_HOME:-$HOME/.cache/ggsh}/fasd-init-cache.zsh"
+local _fasd_cache_path="$HOME/.cache/ggsh/fasd-init-cache.zsh"
 
 if [[ "$commands[fasd]" -nt "$_fasd_cache_path" || ! -s "$_fasd_cache_path" ]]; then
   mkdir -p "$_fasd_cache_path:h"
