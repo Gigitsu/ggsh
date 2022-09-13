@@ -8,6 +8,28 @@ tmux_get() {
 uptime_sh="$1/helpers/uptime.sh"
 
 #############################
+###        Colours        ###
+#############################
+
+BASE03='colour8' 
+BASE02='colour0'
+BASE01='colour10' 
+BASE00='colour11' 
+BASE0='colour12' 
+BASE1='colour14' 
+BASE2='colour7' 
+BASE3='colour15' 
+YELLOW='colour3' 
+ORANGE='colour9' 
+RED='colour1' 
+MAGENTA='colour5' 
+VIOLET='colour13' 
+BLUE='colour4' 
+CYAN='colour6' 
+GREEN='colour2' 
+DEFAULT='default'
+
+#############################
 ###        Options        ###
 #############################
 
@@ -32,30 +54,30 @@ synchronized_mode_on_icon='⚏'       # U+268F
 #############################
 
 tmux set -g status-justify centre
-tmux set -g status-style "fg=colour12,bg=colour8,none"
+tmux set -g status-style "fg=$BASE0,bg=$BASE03,none"
 
 tmux setw -g window-status-separator ""
 
-tmux setw -g window-status-style "fg=colour12,bg=default,none"
-tmux setw -g window-status-last-style "fg=colour4,bg=default,bold"
+tmux setw -g window-status-style "fg=$BASE0,bg=$DEFAULT,none"
+tmux setw -g window-status-last-style "fg=$BLUE,bg=$DEFAULT,bold"
 
-tmux setw -g window-status-format "#[fg=colour0,bg=default,none]$right_upper_triangle #[fg=default,bg=colour0,none]#I:#W#[fg=colour0,bg=default,none]$left_lower_triangle"
-tmux setw -g window-status-current-format "#[fg=colour4,bg=default,none]$right_upper_triangle #[fg=colour0,bg=colour4,bold]#I:#W#[fg=colour4,bg=default,none]$left_lower_triangle"
+tmux setw -g window-status-format "#[fg=$BASE02,bg=$DEFAULT,none]$right_upper_triangle #[fg=$DEFAULT,bg=$BASE02,none]#I:#W#[fg=$BASE02,bg=$DEFAULT,none]$left_lower_triangle"
+tmux setw -g window-status-current-format "#[fg=$BLUE,bg=$DEFAULT,none]$right_upper_triangle #[fg=$BASE02,bg=$BLUE,bold]#I:#W#[fg=$BLUE,bg=$DEFAULT,none]$left_lower_triangle"
 
 
 tmux set -g status-left-length 1000
-tmux set -g status-left "#[fg=colour7,bg=colour9,bold] $user_icon #(whoami)#[fg=colour9,bg=colour0,bold]$left_lower_triangle #[fg=default,bg=colour0,none] ❐ #S #[fg=colour0,bg=colour8,none]$left_lower_triangle "
+tmux set -g status-left "#[fg=$BASE2,bg=$ORANGE,bold] $user_icon #(whoami)#[fg=$ORANGE,bg=$BASE02,bold]$left_lower_triangle #[fg=$DEFAULT,bg=$BASE02,none] ❐ #S #[fg=$BASE02,bg=$BASE03,none]$left_lower_triangle "
 
 tmux set -g status-right-length 1000
-tmux set -g status-right "#{?client_prefix,$prefix_icon, } #{?session_many_attached,$pairing_mode_on_icon,} #{?pane_synchronized,$synchronized_mode_on_icon,} #{?mouse,$mouse_mode_on_icon, }  #[fg=colour0,bg=colour8,none]$right_lower_triangle #[fg=default,bg=colour0,none] ↑ #(cat $uptime_sh | sh -s) $right_lower_separator  #h "
+tmux set -g status-right "#{?client_prefix,$prefix_icon, } #{?session_many_attached,$pairing_mode_on_icon,} #{?pane_synchronized,$synchronized_mode_on_icon,} #{?mouse,$mouse_mode_on_icon, }  #[fg=$BASE02,bg=$BASE03,none]$right_lower_triangle #[fg=$DEFAULT,bg=$BASE02,none] ↑ #(cat $uptime_sh | sh -s) $right_lower_separator  #h "
 
-tmux setw -g pane-border-style "fg=colour0,bg=colour8" 
-tmux set -g pane-active-border-style "fg=colour9,bg=colour8"
+tmux setw -g pane-border-style "fg=$BASE02,bg=$BASE03" 
+tmux set -g pane-active-border-style "fg=$ORANGE,bg=$BASE03"
 
-tmux set -g display-panes-colour "colour11"
-tmux set -g display-panes-active-colour "colour9"
+tmux set -g display-panes-colour $BASE00
+tmux set -g display-panes-active-colour $ORANGE
 
-tmux set -g message-style "fg=colour12,bg=colour0,none"
-tmux set -g message-command-style "fg=colour12,bg=colour0,none"
+tmux set -g message-style "fg=$BASE0,bg=$BASE02,none"
+tmux set -g message-command-style "fg=$BASE0,bg=$BASE02,none"
 
-tmux setw -g mode-style "fg=colour7,bg=colour9,bold"
+tmux setw -g mode-style "fg=$BASE2,bg=$ORANGE,bold"
