@@ -132,19 +132,31 @@ for index ({1..9}); do
 done
 unset index
 
-# Defaults ls with colors
-alias ls="${aliases[ls]:-ls} --color=auto"
 
 # List directory contents
-alias l='ls -1A'         # Lists in one column, hidden files.
-alias ll='ls -lh'        # Lists human readable sizes.
-alias lr='ll -R'         # Lists human readable sizes, recursively.
-alias la='ll -A'         # Lists human readable sizes, hidden files.
+if (( $+commands[exa] )); then
+  alias ls='exa --icons --group-directories-first' # Default with icons and directory first
+  alias l='ls -1a'          # Lists in one column, hidden files.
+  alias ll='ls -lghb'       # Lists human readable sizes.
+  alias lr='ll -T'          # Lists human readable sizes, recursively.
+  alias la='ll -a'          # Lists human readable sizes, hidden files.
+  alias lk='ll --sort=size' # Lists sorted by size, largest last.
+  alias lt='ll --sort=date' # Lists sorted by date, most recent last.
+  alias lc='lt --changed'   # Lists sorted by date, most recent last, shows change time.
+  alias lu='lt --accessed'  # Lists sorted by date, most recent last, shows access time.
+else
+  alias ls="${aliases[ls]:-ls} --color=auto" # Defaults ls with colors
+  alias l='ls -1A'         # Lists in one column, hidden files.
+  alias ll='ls -lh'        # Lists human readable sizes.
+  alias lr='ll -R'         # Lists human readable sizes, recursively.
+  alias la='ll -A'         # Lists human readable sizes, hidden files.
+  alias lk='ll -Sr'        # Lists sorted by size, largest last.
+  alias lt='ll -tr'        # Lists sorted by date, most recent last.
+  alias lc='lt -c'         # Lists sorted by date, most recent last, shows change time.
+  alias lu='lt -u'         # Lists sorted by date, most recent last, shows access time.
+fi
+
 alias lm='la | "$PAGER"' # Lists human readable sizes, hidden files through pager.
-alias lk='ll -Sr'        # Lists sorted by size, largest last.
-alias lt='ll -tr'        # Lists sorted by date, most recent last.
-alias lc='lt -c'         # Lists sorted by date, most recent last, shows change time.
-alias lu='lt -u'         # Lists sorted by date, most recent last, shows access time.
 alias sl='ls'            # Correction for common spelling error.
 
 alias grep="${aliases[grep]:-grep} --color=auto"
