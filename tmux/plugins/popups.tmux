@@ -12,7 +12,7 @@ project_formatter="$1/helpers/project_formatter.awk"
 #################################
 
 projects_src="$(realpath ~/Developer/src)"
-fzf_solarized_dark_theme=' --color=fg:#839496,bg:#002b36,hl:#2aa198,fg+:#eee8d5,bg+:#073642,hl+:#268bd2,info:#b58900,prompt:#839496,pointer:#cb4b16,marker:#859900,spinner:#b58900,header:#859900'
+fzf_solarized_dark_theme=' --color=fg:#839496,bg:#002b36,hl:#2aa198,fg+:#eee8d5,bg+:#073642,hl+:#268bd2,info:#b58900,prompt:#859900,pointer:#cb4b16,marker:#859900,spinner:#b58900,header:#859900'
 
 
 #################################
