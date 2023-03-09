@@ -12,6 +12,7 @@ project_formatter="$1/helpers/project_formatter.awk"
 #################################
 
 projects_src="$(realpath ~/Developer/src)"
+fzf_solarized_dark_theme=' --color=fg:#839496,bg:#002b36,hl:#2aa198,fg+:#eee8d5,bg+:#073642,hl+:#268bd2,info:#b58900,prompt:#839496,pointer:#cb4b16,marker:#859900,spinner:#b58900,header:#859900'
 
 
 #################################
@@ -34,9 +35,9 @@ tmux bind -n M-g display-popup -h 95% -w 95% -d '#{pane_current_path}' -E 'gitui
 
 #--- Navigation
 tmux bind -N "Open a git repository under $project_src" -n C-o  display-popup -h 90% -w 90% -E "$list_git_folders_fn |\
-    fzf --reverse --header='Open project >' --with-nth 2 --keep-right --preview-window bottom,border-horizontal --preview '[[ -f {1}/README.md ]] && $project_preview_cmd {1}/README.md || echo \"No readme found\"' | awk '{print \$1}' |\
+    fzf --reverse $fzf_solarized_dark_theme --header='Open project >' --with-nth 2 --keep-right --preview-window bottom,border-horizontal --preview '[[ -f {1}/README.md ]] && $project_preview_cmd {1}/README.md || echo \"No readme found\"' | awk '{print \$1}' |\
     xargs $open_session"
 
 tmux bind -N "Jump to the selected session" -n C-g display-popup -E "$list_detached_sessions_fn |\
-    fzf --bind 'ctrl-x:reload(tmux kill-session -t {} && $list_detached_sessions_fn)' --reverse --header='Jump to session (ctrl-x to kill) >' |\
+    fzf --bind 'ctrl-x:reload(tmux kill-session -t {} && $list_detached_sessions_fn)' --reverse $fzf_solarized_dark_theme --header='Jump to session (ctrl-x to kill) >' |\
     xargs tmux switch-client -t"

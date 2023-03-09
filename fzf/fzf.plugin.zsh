@@ -1,13 +1,13 @@
 # Check fzf exists
 (( ! $+commands[fzf] )) && return 1
 
+local _fzf_solarized_dark_theme=' --color=fg:#839496,bg:#002b36,hl:#2aa198,fg+:#eee8d5,bg+:#073642,hl+:#268bd2,info:#b58900,prompt:#839496,pointer:#cb4b16,marker:#859900,spinner:#b58900,header:#859900'
+
 if (( ${+commands[brew]} )); then
   local _fzf_shell_path="$(brew --prefix fzf)/shell"
 
   source "${_fzf_shell_path}/key-bindings.zsh"
   [[ $- == *i* ]] && source "${_fzf_shell_path}/completion.zsh" 2> /dev/null
-
-  unset _fzf_path
 fi
 
 if (( $+commands[rg] )); then
@@ -15,5 +15,6 @@ if (( $+commands[rg] )); then
   export FZF_CTRL_T_COMMAND='rg --files --hidden --follow -g "!{node_modules,.git}"'
 fi
 
-export FZF_DEFAULT_OPTS='--height 96% --reverse'
+
+export FZF_DEFAULT_OPTS="--height 96% --reverse --preview-window bottom,border-horizontal  $_fzf_solarized_dark_theme"
 export FZF_CTRL_T_OPTS="$FZF_DEFAULT_OPTS --preview \"cat {}\""
