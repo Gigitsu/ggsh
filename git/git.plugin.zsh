@@ -17,7 +17,7 @@ _git_status_ignore_submodules='none'
 function git_clone_onto_srcdir() {
   local fn=$1; shift
 
-  if [[ $# -eq 1 ]]; then
+  if [[ ! -z $1 ]]; then
     local url=${1%%.git*}
     local repo_path="/${url##*(://|@)}"
     repo_path="${repo_path/://}"
@@ -26,7 +26,7 @@ function git_clone_onto_srcdir() {
     local awk_format='{n=split($1,parts,"/");print $1 repo_path,parts[n] " -> " $1 repo_path}'
     local outdir=$(find "$srcdir" ! -path "$srcdir" -type d -maxdepth 1 | awk -v repo_path="$repo_path" $awk_format | fzf --header='Clone for >' --with-nth 2.. --nth 1 | cut -d ' ' -f1)
 
-    sh -c "mkdir -p ${outdir} && ${fn} ${url} ${outdir}"
+    [[ ! -z "$outdir" ]] && sh -c "mkdir -p ${outdir} && ${fn} ${url} ${outdir}"
   else
     sh -c "${fn}"
   fi
