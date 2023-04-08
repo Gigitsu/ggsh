@@ -9,6 +9,6 @@ function format(path) {
   repo = substr(path, length(path_parts[1]) + length(path_parts[2]) + 3)
   user = path_parts[1]
 
-  return user "@" domain "::" repo
+  return user "@" domain " <- " repo
 }
 {print $0, format($0)}

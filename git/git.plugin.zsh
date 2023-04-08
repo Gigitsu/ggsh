@@ -23,7 +23,7 @@ function git_clone_onto_srcdir() {
     repo_path="${repo_path/://}"
 
     local srcdir=$(realpath ~/Developer/src)
-    local awk_format='{n=split($1,parts,"/");print $1 repo_path,parts[n] " @ " $1 repo_path}'
+    local awk_format='{n=split($1,parts,"/");print $1 repo_path,parts[n] " -> " $1 repo_path}'
     local outdir=$(find "$srcdir" ! -path "$srcdir" -type d -maxdepth 1 | awk -v repo_path="$repo_path" $awk_format | fzf --header='Clone for >' --with-nth 2.. --nth 1 | cut -d ' ' -f1)
 
     sh -c "mkdir -p ${outdir} && ${fn} ${url} ${outdir}"
