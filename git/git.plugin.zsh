@@ -11,6 +11,28 @@ _git_log_brief_format='%C(green)%h%C(reset) %s%n%C(blue)(%ar by %an)%C(red)%d%C(
 _git_status_ignore_submodules='none'
 
 #
+# Functions
+# 
+
+function git_clone_onto_srcdir() {
+  local fn=$1; shift
+
+  if [[ $# -eq 1 ]]; then
+    local url=${1%%.git*}
+    local repo_path="/${url##*(://|@)}"
+    repo_path="${repo_path/://}"
+
+    local srcdir=$(realpath ~/Developer/src)
+    local awk_format='{n=split($1,parts,"/");print $1 repo_path,parts[n] " @ " $1 repo_path}'
+    local outdir=$(find "$srcdir" ! -path "$srcdir" -type d -maxdepth 1 | awk -v repo_path="$repo_path" $awk_format | fzf --header='Clone for >' --with-nth 2.. --nth 1 | cut -d ' ' -f1)
+
+    sh -c "mkdir -p ${outdir} && ${fn} ${url} ${outdir}"
+  else
+    sh -c "${fn}"
+  fi
+}
+
+#
 # Aliases
 #
 
@@ -83,6 +105,8 @@ alias gf='git fetch'
 alias gfa='git fetch --all'
 alias gfc='git clone'
 alias gfcr='git clone --recurse-submodules'
+alias gfca='git_clone_onto_srcdir "git clone"'
+alias gfcra='git_clone_onto_srcdir "git clone --recurse-submodules"'
 alias gfm='git pull'
 alias gfma='git pull --autostash'
 alias gfr='git pull --rebase'
