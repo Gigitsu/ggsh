@@ -16,22 +16,22 @@ brew shellenv
 
 | Alias | Command          | Description                                                                     |
 | ----- | ---------------- | ------------------------------------------------------------------------------- |
-| brewc | `brew cleanup`   | Cleans outdated brews and their cached archives.                                |
-| brewi | `brew install`   | Installs a formula.                                                             |
-| brewL | `brew leaves`    | Lists installed formulae that are not dependencies of anotherinstalled formula. |
-| brewl | `brew list`      | Lists installed formulae.                                                       |
-| brewo | `brew outdated`  | Lists brews which have an update available.                                     |
-| brews | `brew search`    | Searches for a formula.                                                         |
-| brewu | `brew upgrade`   | Upgrades outdated formulae.                                                     |
-| brewx | `brew uninstall` | Uninstalls a formula.                                                           |
+| brc   | `brew cleanup`   | Cleans outdated brews and their cached archives.                                |
+| bri   | `brew install`   | Installs a formula.                                                             |
+| brL   | `brew leaves`    | Lists installed formulae that are not dependencies of anotherinstalled formula. |
+| brl   | `brew list`      | Lists installed formulae.                                                       |
+| bro   | `brew outdated`  | Lists brews which have an update available.                                     |
+| brs   | `brew search`    | Searches for a formula.                                                         |
+| bru   | `brew upgrade`   | Upgrades outdated formulae.                                                     |
+| brx   | `brew uninstall` | Uninstalls a formula.                                                           |
 
 ### Homebrew Cask
 
 | Alias | Command                 | Description                                 |
 | ----- | ----------------------- | ------------------------------------------- |
-| caski | `brew install --cask`   | Installs a cask.                            |
-| caskl | `brew list --cask`      | Lists installed casks.                      |
-| casko | `brew outdated --cask`  | Lists casks which have an update available. |
-| casks | `brew search --cask`    | Searches for a cask.                        |
-| casku | `brew unpgrade --cask`  | Upgrades outdated casks.                    |
-| caskx | `brew uninstall --cask` | Uninstalls a cask.                          |
+| cki   | `brew install --cask`   | Installs a cask.                            |
+| ckl   | `brew list --cask`      | Lists installed casks.                      |
+| cko   | `brew outdated --cask`  | Lists casks which have an update available. |
+| cks   | `brew search --cask`    | Searches for a cask.                        |
+| cku   | `brew unpgrade --cask`  | Upgrades outdated casks.                    |
+| ckx   | `brew uninstall --cask` | Uninstalls a cask.                          |

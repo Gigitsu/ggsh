@@ -16,23 +16,23 @@ unset curl_prefix
 #-- Aliases
 
 # Homebrew
-alias brewc='brew cleanup'
-alias brewi='brew install'
-alias brewL='brew leaves'
-alias brewl='brew list'
-alias brewh='brew help'
-alias brewo='brew outdated'
-alias brews='brew search'
-alias brewu='brew upgrade'
-alias brewx='brew uninstall'
+alias brc='brew cleanup'
+alias bri='brew install'
+alias brL='brew leaves'
+alias brl='brew list'
+alias brh='brew help'
+alias bro='brew outdated'
+alias brs='brew search'
+alias bru='brew upgrade'
+alias brx='brew uninstall'
 
 # Homebrew Cask
-alias caski='brew install --cask'
-alias caskl='brew list --cask'
-alias casko='brew outdated --cask'
-alias casks='brew search --cask'
-alias casku='brew upgrade --cask'
-alias caskx='brew uninstall --cask'
+alias cki='brew install --cask'
+alias ckl='brew list --cask'
+alias cko='brew outdated --cask'
+alias cks='brew search --cask'
+alias cku='brew upgrade --cask'
+alias ckx='brew uninstall --cask'
 
 if (( $+commands[fzf] )); then
   function fzf_search_install {
