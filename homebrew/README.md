@@ -14,21 +14,24 @@ brew shellenv
 
 ### Homebrew Core
 
-- `brewc` cleans outdated brews and their cached archives.
-- `brewi` installs a formula.
-- `brewL` lists installed formulae that are not dependencies of another
-  installed formula.
-- `brewl` lists installed formulae.
-- `brewo` lists brews which have an update available.
-- `brews` searches for a formula.
-- `brewu` upgrades outdated formulae.
-- `brewx` uninstalls a formula.
+| Alias | Command          | Description                                                                     |
+| ----- | ---------------- | ------------------------------------------------------------------------------- |
+| brewc | `brew cleanup`   | Cleans outdated brews and their cached archives.                                |
+| brewi | `brew install`   | Installs a formula.                                                             |
+| brewL | `brew leaves`    | Lists installed formulae that are not dependencies of anotherinstalled formula. |
+| brewl | `brew list`      | Lists installed formulae.                                                       |
+| brewo | `brew outdated`  | Lists brews which have an update available.                                     |
+| brews | `brew search`    | Searches for a formula.                                                         |
+| brewu | `brew upgrade`   | Upgrades outdated formulae.                                                     |
+| brewx | `brew uninstall` | Uninstalls a formula.                                                           |
 
 ### Homebrew Cask
 
-- `caski` installs a cask.
-- `caskl` lists installed casks.
-- `casko` lists casks which have an update available.
-- `casks` searches for a cask.
-- `casku` upgrades outdated casks.
-- `caskx` uninstalls a cask.
+| Alias | Command                 | Description                                 |
+| ----- | ----------------------- | ------------------------------------------- |
+| caski | `brew install --cask`   | Installs a cask.                            |
+| caskl | `brew list --cask`      | Lists installed casks.                      |
+| casko | `brew outdated --cask`  | Lists casks which have an update available. |
+| casks | `brew search --cask`    | Searches for a cask.                        |
+| casku | `brew unpgrade --cask`  | Upgrades outdated casks.                    |
+| caskx | `brew uninstall --cask` | Uninstalls a cask.                          |
