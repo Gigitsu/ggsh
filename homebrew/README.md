@@ -16,6 +16,7 @@ brew shellenv
 
 | Alias | Command          | Description                                                                     |
 | ----- | ---------------- | ------------------------------------------------------------------------------- |
+| br    | `brew`           | Brew command                                                                    |
 | brc   | `brew cleanup`   | Cleans outdated brews and their cached archives.                                |
 | bri   | `brew install`   | Installs a formula.                                                             |
 | brL   | `brew leaves`    | Lists installed formulae that are not dependencies of anotherinstalled formula. |

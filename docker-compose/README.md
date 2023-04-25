@@ -6,7 +6,7 @@ This plugin provides aliases for frequent docker-compose commands.
 
 | Alias      | Command                        | Description                                                                      |
 | ---------- | ------------------------------ | -------------------------------------------------------------------------------- |
-| dcoo       | `docker-compose`               | Docker-compose main command                                                      |
+| dco        | `docker-compose`               | Docker-compose main command                                                      |
 | dcob       | `docker-compose build`         | Build containers                                                                 |
 | dcoe       | `docker-compose exec`          | Execute command inside a container                                               |
 | dcops      | `docker-compose ps`            | List containers                                                                  |

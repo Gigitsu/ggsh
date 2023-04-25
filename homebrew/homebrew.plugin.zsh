@@ -10,6 +10,7 @@ eval "${(@M)${(f)"$(brew shellenv 2> /dev/null)"}:#export HOMEBREW*}"
 #-- Aliases
 
 # Homebrew
+alias br='brew cleanup'
 alias brc='brew cleanup'
 alias bri='brew install'
 alias brL='brew leaves'
@@ -39,6 +40,6 @@ if (( $+commands[fzf] )); then
     fi
   }
 
-  alias brews='fzf_search_install formulae'
-  alias casks='fzf_search_install casks'
+  alias brs='fzf_search_install formulae'
+  alias cks='fzf_search_install casks'
 fi
