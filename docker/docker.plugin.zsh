@@ -1,3 +1,13 @@
+#
+# Add aliases for docker
+#
+# Authors
+#   Gigitsu <luigi.clemente@gsquare.it>
+#
+
+# check if docker is installed
+(( ! ${+commands[docker]} )) && return 1
+
 alias dkk='docker'
 alias dkbl='docker build'
 alias dkcin='docker container inspect'

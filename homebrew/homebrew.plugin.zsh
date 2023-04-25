@@ -7,12 +7,6 @@
 # variables as they are already handled in standard zsh configuration.
 eval "${(@M)${(f)"$(brew shellenv 2> /dev/null)"}:#export HOMEBREW*}"
 
-# Add completion for keg-only brewed curl when available.
-if [[ -d "${curl_prefix::="$(brew --prefix 2> /dev/null)"/opt/curl}" ]]; then
-  fpath=($curl_prefix/share/zsh/site-functions $fpath)
-fi
-unset curl_prefix
-
 #-- Aliases
 
 # Homebrew
