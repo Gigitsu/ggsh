@@ -1,5 +1,5 @@
 #
-# Sets keybindings
+# Sets key bindings
 #
 # Authors
 #   Gigitsu <luigi.clemente@gsquare.it>

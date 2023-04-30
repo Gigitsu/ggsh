@@ -1,3 +1,10 @@
+#
+# Set homebrew aliases, configurations and functions
+#
+# Authors:
+#   Gigitsu <luigi.clemente@gsquare.it>
+
+# Check if brew exists
 (( ! $+commands[brew] )) && return 1
 
 #-- Variables
