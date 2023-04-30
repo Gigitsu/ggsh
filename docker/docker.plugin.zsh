@@ -8,7 +8,7 @@
 # check if docker is installed
 (( ! ${+commands[docker]} )) && return 1
 
-alias dkk='docker'
+alias dk='docker'
 alias dkbl='docker build'
 alias dkcin='docker container inspect'
 alias dkcls='docker container ls'

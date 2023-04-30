@@ -12,6 +12,8 @@ as well as some aliases for common kubectl commands.
 | kaf      | `kubectl apply -f`                                 | Apply a YML file                                                                                 |
 | keti     | `kubectl exec -ti`                                 | Drop into an interactive terminal on a container                                                 |
 |          |                                                    | **Manage configuration quickly to switch contexts between local, dev and staging**               |
+| kc       | `kubectl config`                                   | The kubectl config command                                                                       |
+| kcv      | `kubectl config view`                              | View kubectl config                                                                              |
 | kcuc     | `kubectl config use-context`                       | Set the current-context in a kubeconfig file                                                     |
 | kcsc     | `kubectl config set-context`                       | Set a context entry in kubeconfig                                                                |
 | kcdc     | `kubectl config delete-context`                    | Delete the specified context from the kubeconfig                                                 |

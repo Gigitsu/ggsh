@@ -8,12 +8,12 @@
 # Check if kubectl exists
 (( ! $+commands[kubectl] )) && return 1
 
-_kubectl_path="$HOME/.cache/ggsh/share/site-functions/_kubectl"
-if [[ ! -f $_kubectl_path ]]; then
-  mkdir -p $(dirname $_kubectl_path)
-  kubectl completion zsh 2> /dev/null >| $_kubectl_path &|
+_completion_path="$HOME/.cache/ggsh/share/site-functions/_kubectl"
+if [[ ! -f $_completion_path ]]; then
+  mkdir -p $(dirname $_completion_path)
+  kubectl completion zsh 2> /dev/null >| $_completion_path &|
 fi
-unset _kubectl_path
+unset _completion_path
 
 # This command is used a LOT both below and in daily life
 alias k=kubectl
@@ -28,6 +28,8 @@ alias kaf='kubectl apply -f'
 alias keti='kubectl exec -t -i'
 
 # Manage configuration quickly to switch contexts between local, dev ad staging.
+alias kc='kubectl config'
+alias kcv='kubectl config view'
 alias kcuc='kubectl config use-context'
 alias kcsc='kubectl config set-context'
 alias kcdc='kubectl config delete-context'

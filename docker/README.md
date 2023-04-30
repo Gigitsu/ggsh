@@ -6,6 +6,7 @@ This plugin aliases for [docker](https://www.docker.com/).
 
 | Alias    | Command                       | Description                                                                              |
 | -------- | ----------------------------- | ---------------------------------------------------------------------------------------- |
+| dk       | `docker`                      | The docker command                                                                       |
 | dkbl     | `docker build`                | Build an image from a Dockerfile                                                         |
 | dkcin    | `docker container inspect`    | Display detailed information on one or more containers                                   |
 | dkcls    | `docker container ls`         | List all the running docker containers                                                   |
