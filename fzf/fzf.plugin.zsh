@@ -22,5 +22,5 @@ if (( $+commands[rg] )); then
 fi
 
 
-export FZF_DEFAULT_OPTS="--height 96% --reverse --preview-window bottom,border-horizontal $_fzf_solarized_dark_theme"
+export FZF_DEFAULT_OPTS="--height 96% --reverse --bind ctrl-space:preview-down --preview-window bottom,border-horizontal $_fzf_solarized_dark_theme"
 export FZF_CTRL_T_OPTS="$FZF_DEFAULT_OPTS --preview \"cat {}\""
