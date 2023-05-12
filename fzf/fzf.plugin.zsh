@@ -13,7 +13,7 @@ if (( ${+commands[brew]} )); then
   local _fzf_shell_path="$(brew --prefix fzf)/shell"
 
   source "${_fzf_shell_path}/key-bindings.zsh"
-  [[ $- == *i* ]] && source "${_fzf_shell_path}/completion.zsh" 2> /dev/null
+  [[ -o interactive ]] && source "${_fzf_shell_path}/completion.zsh" 2> /dev/null
 fi
 
 if (( $+commands[rg] )); then
