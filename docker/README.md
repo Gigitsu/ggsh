@@ -25,16 +25,19 @@ This plugin aliases for [docker](https://www.docker.com/).
 | dknls    | `docker network ls`           | List all networks the engine daemon knows about, including those spanning multiple hosts |
 | dknrm    | `docker network rm`           | Remove one or more networks                                                              |
 | dkpo     | `docker container port`       | List port mappings or a specific mapping for the container                               |
+| dkps     | `docker ps --format=...`      | List docker active containers with a custom format                                       |
+| dkpsa    | `docker ps -a --format=...`   | List every docker containers with a custom format                                        |
 | dkpu     | `docker pull`                 | Pull an image or a repository from a registry                                            |
 | dkr      | `docker container run`        | Create a new container and start it using the specified command                          |
 | dkrit    | `docker container run -it`    | Create a new container and start it in an interactive shell                              |
 | dkrm     | `docker container rm`         | Remove the specified container(s)                                                        |
 | dkrm!    | `docker container rm -f`      | Force the removal of a running container (uses SIGKILL)                                  |
-| dkst     | `docker container start`      | Start one or more stopped containers                                                     |
 | dkrs     | `docker container restart`    | Restart one or more containers                                                           |
+| dkst     | `docker container start`      | Start one or more stopped containers                                                     |
 | dksta    | `docker stop $(docker ps -q)` | Stop all running containers                                                              |
 | dkstp    | `docker container stop`       | Stop one or more running containers                                                      |
 | dktop    | `docker top`                  | Display the running processes of a container                                             |
+| dkv      | `docker volume`               | Shortcut for docker volumes                                                              |
 | dkvi     | `docker volume inspect`       | Display detailed information about one or more volumes                                   |
 | dkvls    | `docker volume ls`            | List all the volumes known to docker                                                     |
 | dkvprune | `docker volume prune`         | Cleanup dangling volumes                                                                 |
