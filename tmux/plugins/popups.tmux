@@ -31,7 +31,7 @@ project_preview_cmd=$( command -v glow &> /dev/null && echo "glow -s dark" || ec
 tmux bind -n M-s display-popup -h 95% -w 95% -E "tmux new-session -A -s scratch"
 
 #--- Git
-tmux bind -n M-g display-popup -h 95% -w 95% -d '#{pane_current_path}' -E 'gitui'
+tmux bind -n M-g display-popup -h 95% -w 95% -d '#{pane_current_path}' -E 'lazygit'
 
 #--- Navigation
 tmux bind -N "Open a git repository under $project_src" -n C-o  display-popup -h 90% -w 90% -E "$list_git_folders_fn |\

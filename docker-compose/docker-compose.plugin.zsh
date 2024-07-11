@@ -9,7 +9,7 @@
 (( ! (${+commands[docker]} + ${+commands[docker-compose]}) )) && return 1
 
 # support Compose v2 as docker CLI plugin
-(( ${+commands[docker-compose]} )) && dccmd='docker-compose' || dccmd='docker compose'
+dccmd='docker compose'
 
 alias dco="$dccmd"
 alias dcb="$dccmd build"
