@@ -134,10 +134,10 @@ unset index
 
 
 # List directory contents
-if (( $+commands[exa] )); then
-  export EXA_COLORS=${EXA_COLORS:-'ga=34:gm=33:gd=31:gv=35:gt=33:uu=1;32:gu=1;32:ur=1;32:uw=1;33:ux=1;31:ue=1;31:gr=1;32:gw=1;33:gx=1;31:tr=1;32:tw=1;33:tx=1;31:sn=33:sb=33::nm=1;33:ng=1;33:um=1;33:ug=1:33:nt=1;33:ut=1;33:da=38'}
+if (( $+commands[eza] )); then
+  export EZA_COLORS=${EZA_COLORS:-'ga=34:gm=33:gd=31:gv=35:gt=33:uu=1;32:gu=1;32:ur=1;32:uw=1;33:ux=1;31:ue=1;31:gr=1;32:gw=1;33:gx=1;31:tr=1;32:tw=1;33:tx=1;31:sn=33:sb=33::nm=1;33:ng=1;33:um=1;33:ug=1:33:nt=1;33:ut=1;33:da=38'}
 
-  alias ls='exa --icons --group-directories-first' # Default with icons and directory first
+  alias ls='eza --icons --group-directories-first' # Default with icons and directory first
   alias l='ls -1a'          # Lists in one column, hidden files.
   alias ll='ls -lghb'       # Lists human readable sizes.
   alias lr='ll -T'          # Lists human readable sizes, recursively.
