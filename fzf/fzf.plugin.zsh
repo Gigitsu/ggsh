@@ -21,7 +21,6 @@ if (( $+commands[rg] )); then
   export FZF_CTRL_T_COMMAND='rg --files --hidden --follow -g "!{node_modules,.git}"'
 fi
 
-
 export FZF_DEFAULT_OPTS="--height 96% --reverse --bind ctrl-space:preview-down --preview-window bottom,border-horizontal $_fzf_solarized_dark_theme"
 
 if (( $+commands[bat] )); then
