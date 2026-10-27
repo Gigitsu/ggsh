@@ -53,6 +53,9 @@ synchronized_mode_on_icon='❖'       # U+268F
 ###         Theme         ###
 #############################
 
+# tmux >= 3.8 ships builtin light/dark themes; stick to the terminal ANSI palette (solarized)
+tmux set -gq theme terminal
+
 tmux set -g status-justify centre
 tmux set -g status-style "fg=$BASE0,bg=$BASE02,none"
 
@@ -76,7 +79,8 @@ tmux set -g pane-active-border-style "fg=$ORANGE,bg=$BASE03"
 tmux set -g display-panes-colour $BASE00
 tmux set -g display-panes-active-colour $ORANGE
 
-tmux set -g message-style "fg=$BASE0,bg=$BASE02,none"
-tmux set -g message-command-style "fg=$BASE0,bg=$BASE02,none"
+# tmux >= 3.7 needs fill= to paint the whole message line
+tmux set -g message-style "fg=$BASE0,bg=$BASE02,fill=$BASE02,none"
+tmux set -g message-command-style "fg=$BASE0,bg=$BASE02,fill=$BASE02,none"
 
 tmux setw -g mode-style "fg=$BASE2,bg=$ORANGE,bold"

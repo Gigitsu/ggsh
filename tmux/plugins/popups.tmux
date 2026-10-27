@@ -24,6 +24,15 @@ list_git_folders_fn="find $projects_src -type d -exec [ -e '{}/.git' ] ';' -prun
 project_preview_cmd=$( command -v glow &> /dev/null && echo "glow -s dark" || echo "cat")
 
 #################################
+###           Theme           ###
+#################################
+
+# tmux >= 3.8 paints popups with themedarkgrey by default, use the terminal background instead.
+# -q keeps older versions (without these options) quiet.
+tmux set -gq popup-style default
+tmux set -gq popup-border-style default
+
+#################################
 ###          Bindings         ###
 #################################
 
@@ -35,7 +44,7 @@ tmux bind -n M-g display-popup -h 95% -w 95% -d '#{pane_current_path}' \
   -E 'if [ -f ./local-lazygit.sh ]; then bash ./local-lazygit.sh; else lazygit; fi'
 
 #--- Navigation
-tmux bind -N "Open a git repository under $project_src" -n C-o  display-popup -h 90% -w 90% -E "$list_git_folders_fn |\
+tmux bind -N "Open a git repository under $projects_src" -n C-o  display-popup -h 90% -w 90% -E "$list_git_folders_fn |\
     fzf --reverse $fzf_solarized_dark_theme --header='Open project >' --with-nth 2.. --keep-right --bind ctrl-space:preview-down --preview-window bottom,border-horizontal --preview '[[ -f {1}/README.md ]] && $project_preview_cmd {1}/README.md || echo \"No readme found\"' | awk '{print \$1}' |\
     xargs $open_session"
 
